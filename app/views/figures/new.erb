@@ -1,0 +1,35 @@
+
+<!-- Form to add new figure-->
+ <form method='post' action='/figures'>
+  <label>Add New Figure </label><p>
+  <input name='figure[name]' id='figure_name' type='text' >
+
+
+
+<br><br>
+<!-- landmark checkboxes -->
+Associate the landmarks to this figure!<p>
+<%  Landmark.all.each do |landmark| %>
+<input type='checkbox' name='figure[landmark_ids][]' value="<%=landmark.id%>" id="landmark_<%=landmark.id%>">
+<%=landmark.name%><p>
+</input>
+<% end %>
+<br>
+<!-- new landmark form-->
+Or add new landmark<p>
+ Name <input type='text' name='landmark[name]' id='new_landmark'>  
+ Year <input type='number' name='landmark[year_completed]' >  
+  <br><br>
+<!-- title checkboxes -->
+Associate the titles as well<p>
+<% Title.all.each do |title|%>
+<input type='checkbox' name='figure[title_ids][]' value="<%=title.id%>" id="title_<%=title.id%>">
+<%=title.name%><p>
+</input>
+<%end%>
+<br>
+<!-- new title form-->
+Or add a new title<p>
+<input type='text' name='title[name]' id='new_title'><p>
+  <input type='submit' value='Create New Figure'>
+  </form>

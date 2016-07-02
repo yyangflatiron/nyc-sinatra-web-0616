@@ -1,0 +1,49 @@
+<!-- <form method='post' action='/figures/<%=@figure.id%>'>
+  <input name='_method' type='hidden' id='hidden' value='patch'>
+  Figure Name: <input type ='text' name='figure[name]' >
+
+
+
+
+  <input type='submit' value='submit'>
+
+
+</form>
+
+ -->
+<!-- id='figure_name' -->
+
+
+<!-- Form to add new figure-->
+ <form method='post' action='/figures/<%=@figure.id%>'>
+  <label>Edit a figure </label><p>
+Old name: <%=@figure.name%><p>Change the name: 
+  <input name='_method' id='hidden' type='hidden' value='patch'>
+  <input type='text' id='figure_name' name='figure[name]'>
+<br><br>
+<!-- landmark checkboxes -->
+Associate the landmarks to this figure!<p>
+<%  Landmark.all.each do |landmark| %>
+<input type='checkbox' name='figure[landmark_ids][]' value="<%=landmark.id%>" id="landmark_<%=landmark.id%>">
+<%=landmark.name%><p>
+</input>
+<% end %>
+<br>
+<!-- new landmark form-->
+Or add new landmark<p>
+  <input type='text' name='landmark[name]' id='new_landmark'>  <!-- WHY DONT YOU NEED A VALUE OR ID HERE?? -->
+  <input type='number' name='landmark[year_completed]' >  
+  <br><br>
+<!-- title checkboxes -->
+Associate the titles as well<p>
+<% Title.all.each do |title|%>
+<input type='checkbox' name='figure[title_ids][]' value="<%=title.id%>" id="title_<%=title.id%>">
+<%=title.name%><p>
+</input>
+<%end%>
+<br>
+<!-- new title form-->
+Or add a new title<p>
+<input type='text' name='title[name]' id='new_title'><p>
+  <input type='submit' value='Edit Figure'>
+  </form>

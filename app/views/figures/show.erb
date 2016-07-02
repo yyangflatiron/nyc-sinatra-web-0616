@@ -1,0 +1,18 @@
+<h1>Figure name: <%=@figure.name%><p></h1>
+
+<% if @figure.landmarks != [] %>
+<h2>Landmarks associated to this figure:</h2><p>
+<% @figure.landmarks.each do |landmark| %>
+  Name: <%= landmark.name %><p>
+  <% if landmark.year_completed != ""%>
+  Year completed: <%= landmark.year_completed%><p>
+  <%end%>
+<% end %><p> 
+<%end%>
+
+<% if @figure.titles != [] %>
+<h2>Titles associated to this figure:</h2>
+<% @figure.titles.each do |title| %>
+  <%= title.name %><p>
+<% end %><p> 
+<%end%>
